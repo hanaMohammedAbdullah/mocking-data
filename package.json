@@ -1,0 +1,40 @@
+{
+  "name": "curriculum-backend-mocking-practice",
+  "version": "1.0.0",
+  "description": "Mocking Practice",
+  "main": "index.js",
+  "scripts": {
+    "start:app": "nodemon src/app.js",
+    "test:app": "NODE_ENV=test jest  --detectOpenHandles",
+    "test": "CONT=$(docker ps -aqf name=mocking-practice-app) && [ $CONT ] && docker exec -t -w /backend-app $CONT npm run test:app",
+    "postinstall": "CONT=$(docker ps -aqf name=mocking-practice-app) && [ $CONT ] && docker exec -w /backend-app $CONT npm i || true",
+    "start": "docker-compose up",
+    "build": "docker-compose up --build",
+    "prune": "docker-compose down -v",
+    "stop": "docker-compose down"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ReCoded-Org/curriculum-backend-mocking-practice.git"
+  },
+  "author": "Re:Coded",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ReCoded-Org/curriculum-backend-mocking-practice/issues"
+  },
+  "homepage": "https://github.com/ReCoded-Org/curriculum-backend-mocking-practice#readme",
+  "dependencies": {
+    "chai": "^5.1.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mocha": "^10.4.0",
+    "mongodb": "^4.2.1",
+    "mongoose": "^6.0.14",
+    "nodemailer": "^6.9.13"
+  },
+  "devDependencies": {
+    "jest": "^27.4.3",
+    "nodemon": "^2.0.15",
+    "supertest": "^7.0.0"
+  }
+}
